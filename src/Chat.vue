@@ -79,6 +79,7 @@
   }
   .controls__elem:first-child {
     flex-grow: 1;
+    margin-right: 5px;
   }
   .controls__elem {
     flex-grow: 0;
