@@ -80,4 +80,8 @@
   .controls__elem {
     flex-grow: 1;
   }
+
+  .controls__elem::placeholder {
+    text-align: center;
+  }
   </style>
