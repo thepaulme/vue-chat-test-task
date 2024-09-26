@@ -1,47 +1,82 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div class="chat-container">
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+    <div v-for="(chat, user) in chats" :key="user" class="chat-window">
+      <h2>user {{ user + 1 }}</h2>
+        <div class="messages">
+          <div v-for="(message, index) in messages" :key="index" :class="{'me': message.user === user, 'anyUser': message.user !== user}" class="message">
+            {{ message.content }}
+          </div>
+        </div>
+        <div class="controls">
+          <input class="controls__elem" v-model="newMessage[user]" @keyup.enter="sendMessage(user)" placeholder="Поле для ввода сообщения" />
+          <input class="controls__elem" type="button" @click="sendMessage(user)" value="Отправить" />
+        </div>
     </div>
-  </header>
 
-  <main>
-    <TheWelcome />
-  </main>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<script setup>
+import { ref } from 'vue';
+
+const chats = [0,1];
+
+const messages = ref([]);
+
+const newMessage = [];
+
+const sendMessage = (user) => {
+  if (newMessage[user] == undefined || newMessage[user] == '') return;
+  messages.value.push({user: user, content: newMessage[user]});
+  newMessage[user] = '';
+};
+
+</script>
+
+<style>
+.chat-container {
+  display: flex;
+  justify-content: space-around;
+  width: 1000px;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.chat-window {
+  width: 48%;
+  border: 1px solid #ccc;
+  padding: 10px;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+.messages {
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  overflow-y: auto;
+  border: 1px solid #eee;
+  padding: 10px;
+  margin-bottom: 10px;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
+.message {
+  margin: 7px;
+  padding: 15px;
+  width: 60%;
+  text-align: center;
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.me {
+  border: 1px solid #eee;
+  align-self: flex-end;
+}
+
+.anyUser {
+  border: 1px solid #eee;
+}
+
+.controls {
+  display: flex;
+}
+.controls__elem {
+  display: flex;
 }
 </style>
