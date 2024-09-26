@@ -38,11 +38,12 @@
   .chat-container {
     display: flex;
     justify-content: space-around;
-    width: 1000px;
+    margin: 0 auto;
+    max-width: 1000px;
   }
  
   .chat-window {
-    width: 48%;
+    width: 45%;
     border: 1px solid #ccc;
     padding: 10px;
   }
@@ -76,7 +77,7 @@
   .controls {
     display: flex;
   }
-  .controls__elem {
-
+  .controls__elem:first {
+    flex-grow: 1;
   }
   </style>
