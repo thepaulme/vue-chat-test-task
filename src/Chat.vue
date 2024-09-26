@@ -77,8 +77,11 @@
   .controls {
     display: flex;
   }
-  .controls__elem {
+  .controls__elem:first-child {
     flex-grow: 1;
+  }
+  .controls__elem {
+    flex-grow: 0;
   }
 
   ::placeholder {
