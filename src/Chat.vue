@@ -81,7 +81,7 @@
     flex-grow: 1;
   }
 
-  .controls__elem::placeholder {
+  ::placeholder {
     text-align: center;
   }
   </style>
