@@ -76,7 +76,7 @@
   .controls {
     display: flex;
   }
-  .controls__elem:first {
-    flex: 1;
+  .controls__elem {
+
   }
   </style>
