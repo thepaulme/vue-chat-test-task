@@ -9,7 +9,7 @@
             </div>
           </div>
           <div class="controls">
-            <input class="controls__elem" style="flex-grow: 1;" v-model="newMessage[user]" @keyup.enter="sendMessage(user)" placeholder="Поле для ввода сообщения" />
+            <input class="controls__elem" v-model="newMessage[user]" @keyup.enter="sendMessage(user)" placeholder="Поле для ввода сообщения" />
             <input class="controls__elem" type="button" @click="sendMessage(user)" value="Отправить" />
           </div>
       </div>
@@ -77,7 +77,7 @@
   .controls {
     display: flex;
   }
-  .controls__elem:first {
+  .controls__elem {
     flex-grow: 1;
   }
   </style>
