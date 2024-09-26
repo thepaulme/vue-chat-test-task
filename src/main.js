@@ -5,4 +5,4 @@
 
 import Chat from './Chat.vue'
 
-//createApp(App).mount('#app')
+createApp(Chat).mount('#app')
